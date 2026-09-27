@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>One Small Question 👀</title>
+
+<title>Sooo... 👀</title>
 
 <style>
     * {
@@ -16,25 +17,29 @@
         min-height: 100vh;
         overflow: hidden;
         font-family: "Trebuchet MS", Arial, sans-serif;
+        color: #4c303b;
+
         background:
-            radial-gradient(circle at 15% 20%, #fff 0%, transparent 25%),
-            radial-gradient(circle at 85% 80%, #ffdce8 0%, transparent 30%),
-            linear-gradient(135deg, #ffe6ef, #fff7fa);
+            radial-gradient(circle at 15% 15%, rgba(255,255,255,.95), transparent 24%),
+            radial-gradient(circle at 85% 85%, rgba(255,210,225,.55), transparent 30%),
+            linear-gradient(135deg, #ffe8ef, #fff8fb);
+
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #4b303b;
     }
 
-    /* ---------------- FLOATING HEARTS ---------------- */
+    /* =========================
+       FLOATING HEARTS
+       ========================= */
 
     .heart {
         position: fixed;
         bottom: -40px;
         pointer-events: none;
-        opacity: 0.35;
-        animation: floatUp linear infinite;
+        opacity: .25;
         z-index: 0;
+        animation: floatUp linear infinite;
     }
 
     @keyframes floatUp {
@@ -44,186 +49,314 @@
         }
 
         10% {
-            opacity: 0.35;
+            opacity: .25;
         }
 
         100% {
-            transform: translateY(-115vh) rotate(20deg);
+            transform: translateY(-115vh) rotate(25deg);
             opacity: 0;
         }
     }
 
-    /* ---------------- CARD ---------------- */
+    /* =========================
+       MAIN CARD
+       ========================= */
 
     .card {
-        width: min(92vw, 520px);
+        width: min(92vw, 540px);
         max-height: 90vh;
         overflow-y: auto;
-        padding: 34px 28px;
-        background: rgba(255,255,255,0.94);
-        border-radius: 28px;
+
+        padding: 36px 28px;
+
+        background: rgba(255,255,255,.95);
+        border-radius: 30px;
+
         box-shadow:
-            0 25px 70px rgba(102, 47, 72, 0.15),
-            0 5px 20px rgba(102, 47, 72, 0.08);
+            0 25px 70px rgba(90,45,65,.14),
+            0 5px 20px rgba(90,45,65,.08);
+
         text-align: center;
+
         position: relative;
         z-index: 2;
+
+        animation: cardAppear .6s ease;
+    }
+
+    @keyframes cardAppear {
+        from {
+            opacity: 0;
+            transform: translateY(12px) scale(.98);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
     }
 
     .emoji {
-        font-size: 50px;
+        font-size: 52px;
         margin-bottom: 8px;
+
+        animation: softBounce 2.4s ease-in-out infinite;
+    }
+
+    @keyframes softBounce {
+        0%, 100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-6px);
+        }
     }
 
     h1 {
         font-size: 32px;
-        margin-bottom: 15px;
         line-height: 1.2;
+        margin-bottom: 16px;
     }
 
     h2 {
         font-size: 27px;
-        margin-bottom: 15px;
         line-height: 1.25;
+        margin-bottom: 16px;
     }
 
     p {
         font-size: 17px;
         line-height: 1.65;
-        color: #795d69;
+        color: #765966;
     }
 
     .question {
-        font-size: 21px;
-        line-height: 1.45;
-        font-weight: bold;
         margin: 24px 0;
-    }
-
-    /* ---------------- BUTTONS ---------------- */
-
-    .buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 11px;
-        margin-top: 20px;
-    }
-
-    button {
-        border: none;
-        border-radius: 999px;
-        padding: 14px 20px;
-        font-family: inherit;
-        font-size: 16px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: transform 0.18s ease, box-shadow 0.18s ease;
-        -webkit-tap-highlight-color: transparent;
-    }
-
-    button:hover {
-        transform: scale(1.03);
-    }
-
-    .main-btn {
-        background: linear-gradient(135deg, #ff5d91, #ff82a9);
-        color: white;
-        box-shadow: 0 9px 22px rgba(255, 93, 145, 0.25);
-    }
-
-    .option-btn {
-        background: #f6e5eb;
-        color: #5d414c;
-    }
-
-    .dark-btn {
-        background: #49404c;
-        color: white;
-    }
-
-    .money-btn {
-        background: #e8d8bb;
-        color: #5f4b2d;
-    }
-
-    .response {
-        min-height: 35px;
-        margin-top: 17px;
-        color: #995d75;
+        font-size: 21px;
         font-weight: bold;
         line-height: 1.5;
     }
 
-    .memory {
-        margin: 22px 0;
-        padding: 22px;
-        border-radius: 20px;
-        background: #fff1f5;
-        font-size: 18px;
-        line-height: 1.6;
+    /* =========================
+       BUTTONS
+       ========================= */
+
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 20px;
     }
 
-    .small {
-        margin-top: 12px;
+    button {
+        width: 100%;
+        border: none;
+        border-radius: 999px;
+
+        padding: 14px 20px;
+
+        font-family: inherit;
+        font-size: 16px;
+        font-weight: bold;
+
+        cursor: pointer;
+
+        transition:
+            transform .16s ease,
+            box-shadow .16s ease,
+            filter .16s ease;
+
+        -webkit-tap-highlight-color: transparent;
+        position: relative;
+        overflow: hidden;
+    }
+
+    button:hover {
+        transform: translateY(-2px) scale(1.015);
+        filter: brightness(1.03);
+    }
+
+    button:active {
+        transform: scale(.96);
+    }
+
+    .option-btn {
+        color: #5b404b;
+        background: #f7e5ec;
+        box-shadow: 0 4px 12px rgba(95,55,72,.06);
+    }
+
+    .option-btn:hover {
+        box-shadow: 0 8px 18px rgba(95,55,72,.12);
+    }
+
+    .main-btn {
+        color: white;
+        background: linear-gradient(135deg, #ff5d91, #ff83aa);
+        box-shadow: 0 9px 22px rgba(255,93,145,.24);
+    }
+
+    .money-btn {
+        color: #604a2c;
+        background: #ead9b9;
+        box-shadow: 0 5px 14px rgba(90,70,40,.08);
+    }
+
+    .dark-btn {
+        color: white;
+        background: #49404d;
+    }
+
+    /* tiny ripple */
+    button::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(255,255,255,.12);
+        opacity: 0;
+        transition: opacity .15s ease;
+        pointer-events: none;
+    }
+
+    button:active::after {
+        opacity: 1;
+    }
+
+    /* =========================
+       MEMORY BOX
+       ========================= */
+
+    .memory-box {
+        margin: 22px 0;
+
+        padding: 23px;
+
+        background: #fff2f6;
+
+        border-radius: 21px;
+
+        font-size: 18px;
+        line-height: 1.65;
+
+        box-shadow: inset 0 0 0 1px rgba(255,120,160,.06);
+    }
+
+    .memory-label {
         font-size: 13px;
-        color: #aa8997;
+        font-weight: bold;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #b17991;
+
+        margin-bottom: 12px;
+    }
+
+    /* =========================
+       REVEAL AREA
+       ========================= */
+
+    .reveal-area {
+        position: relative;
+        width: 100%;
+        height: 190px;
+
+        margin-top: 18px;
+
+        overflow: hidden;
+        border-radius: 22px;
+
+        background: #fbf8ff;
+    }
+
+    #revealBtn {
+        position: absolute;
+
+        left: 50%;
+        top: 62px;
+
+        width: auto;
+        min-width: 245px;
+
+        transform: translateX(-50%);
+
+        color: white;
+        background: linear-gradient(135deg, #6659ea, #897cff);
+
+        box-shadow:
+            0 12px 28px rgba(102,89,234,.25);
+
+        white-space: nowrap;
+
+        transition:
+            left .18s ease,
+            top .18s ease,
+            transform .18s ease,
+            box-shadow .18s ease;
+    }
+
+    #revealBtn:hover {
+        box-shadow:
+            0 15px 32px rgba(102,89,234,.35);
+    }
+
+    /* =========================
+       PAY / GIVE UP
+       ========================= */
+
+    .small-note {
+        font-size: 13px;
+        color: #a48692;
+        margin-top: 12px;
+    }
+
+    .message-box {
+        margin: 20px 0;
+        padding: 23px;
+
+        border-radius: 21px;
+
+        background: #fff3f6;
+    }
+
+    .big-emoji {
+        font-size: 58px;
+        margin-bottom: 12px;
+    }
+
+    /* =========================
+       SCREEN TRANSITION
+       ========================= */
+
+    .screen {
+        animation: screenIn .38s ease;
+    }
+
+    @keyframes screenIn {
+        from {
+            opacity: 0;
+            transform: translateY(7px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     .hidden {
         display: none !important;
     }
 
-    /* ---------------- REVEAL SCREEN ---------------- */
-
-    .reveal-box {
-        position: relative;
-        width: 100%;
-        height: 175px;
-        margin-top: 18px;
-        overflow: hidden;
-    }
-
-    #revealBtn {
-        position: absolute;
-        left: 50%;
-        top: 55px;
-        transform: translateX(-50%);
-        background: linear-gradient(135deg, #6254e8, #887cff);
-        color: white;
-        box-shadow: 0 10px 25px rgba(98,84,232,0.25);
-        white-space: nowrap;
-    }
-
-    .shake {
-        animation: shake 0.32s ease;
-    }
-
-    @keyframes shake {
-        0%   { transform: translateX(0) rotate(0deg); }
-        25%  { transform: translateX(0) rotate(-4deg); }
-        50%  { transform: translateX(0) rotate(4deg); }
-        75%  { transform: translateX(0) rotate(-3deg); }
-        100% { transform: translateX(0) rotate(0deg); }
-    }
-
-    .message-box {
-        margin-top: 20px;
-        padding: 22px;
-        border-radius: 20px;
-        background: #fff3f6;
-        line-height: 1.6;
-    }
-
-    .big {
-        font-size: 50px;
-        margin-bottom: 10px;
-    }
-
-    /* ---------------- MOBILE ---------------- */
+    /* =========================
+       MOBILE
+       ========================= */
 
     @media (max-width: 500px) {
+
         .card {
-            padding: 28px 19px;
+            padding: 30px 19px;
+            width: 94vw;
         }
 
         h1 {
@@ -238,8 +371,12 @@
             font-size: 19px;
         }
 
-        .reveal-box {
-            height: 185px;
+        .reveal-area {
+            height: 200px;
+        }
+
+        #revealBtn {
+            min-width: 220px;
         }
     }
 </style>
@@ -247,13 +384,18 @@
 
 <body>
 
+<!-- Floating hearts -->
 <div id="hearts"></div>
+
 
 <div class="card">
 
-    <!-- ================= SCREEN 1 ================= -->
 
-    <section id="screen1">
+    <!-- =====================================
+         SCREEN 1
+         ===================================== -->
+
+    <div class="screen" id="screen1">
 
         <div class="emoji">👀</div>
 
@@ -262,226 +404,95 @@
         <p>
             You asked my friend for my Instagram...
             <br><br>
-            and apparently you wanted to talk to me about something.
+
+            and apparently you wanted to talk
+            to me about something.
             <br><br>
+
             I got curious. 😂
             <br><br>
+
             So I made this unnecessarily complicated.
         </p>
 
-        <button class="main-btn" onclick="showScreen(2)">
-            Continue
-        </button>
+        <div class="buttons">
 
-    </section>
+            <button
+                class="main-btn"
+                onclick="nextScreen(2)">
+                Okay... let's see 👀
+            </button>
+
+        </div>
+
+    </div>
 
 
-    <!-- ================= SCREEN 2 ================= -->
 
-    <section id="screen2" class="hidden">
+    <!-- =====================================
+         SCREEN 2
+         ===================================== -->
+
+    <div class="screen hidden" id="screen2">
 
         <div class="emoji">🤨</div>
 
         <h2>First question</h2>
 
         <div class="question">
-            Did you actually miss talking to me?
-        </div>
-
-        <div class="buttons">
-
-            <button class="option-btn" onclick="answer1(1)">
-                A little 👀
-            </button>
-
-            <button class="option-btn" onclick="answer1(2)">
-                Maybe 😂
-            </button>
-
-            <button class="option-btn" onclick="answer1(3)">
-                Absolutely not
-            </button>
-
-        </div>
-
-        <div id="response1" class="response"></div>
-
-        <button
-            id="continue1"
-            class="main-btn hidden"
-            onclick="showScreen(3)">
-            Continue
-        </button>
-
-    </section>
-
-
-    <!-- ================= SCREEN 3 ================= -->
-
-    <section id="screen3" class="hidden">
-
-        <div class="emoji">🕵️</div>
-
-        <h2>Okay, be honest...</h2>
-
-        <div class="question">
-            When you asked for my username,
+            When you asked for my username...
+            <br>
             what were you actually thinking?
         </div>
 
         <div class="buttons">
 
-            <button class="option-btn" onclick="answer2(1)">
+            <button
+                class="option-btn"
+                onclick="answerQuestion(3)">
                 I wanted to talk
             </button>
 
-            <button class="option-btn" onclick="answer2(2)">
-                I was curious
+            <button
+                class="option-btn"
+                onclick="answerQuestion(3)">
+                I was curious 👀
             </button>
 
-            <button class="option-btn" onclick="answer2(3)">
+            <button
+                class="option-btn"
+                onclick="answerQuestion(3)">
                 That's classified 🔐
             </button>
 
         </div>
 
-        <div id="response2" class="response"></div>
-
-        <button
-            id="continue2"
-            class="main-btn hidden"
-            onclick="showScreen(4)">
-            Continue
-        </button>
-
-    </section>
+    </div>
 
 
-    <!-- ================= SCREEN 4 ================= -->
 
-    <section id="screen4" class="hidden">
+    <!-- =====================================
+         SCREEN 3
+         ===================================== -->
 
-        <div class="emoji">🧠</div>
+    <div class="screen hidden" id="screen3">
 
-        <h2>Memory check</h2>
+        <div class="emoji">🌙</div>
 
-        <p>
-            Before we continue...
-            <br>
-            let's see if you still remember this.
-        </p>
+        <h2>Okay... memory check.</h2>
 
-        <div class="memory">
-            <strong>YOUR MEMORY GOES HERE</strong>
+        <div class="memory-box">
+
+            <div class="memory-label">
+                Memory #1
+            </div>
+
+            Remember that moonlight night
+            on the hotel rooftop...
+
             <br><br>
-            Replace this with one of your
-            funniest memories together. 😂
-        </div>
 
-        <div class="buttons">
-
-            <button class="option-btn" onclick="memoryAnswer(1)">
-                Of course I remember 😂
-            </button>
-
-            <button class="option-btn" onclick="memoryAnswer(2)">
-                Stop exposing us 😭
-            </button>
-
-        </div>
-
-        <div id="response3" class="response"></div>
-
-        <button
-            id="continue3"
-            class="main-btn hidden"
-            onclick="showScreen(5)">
-            Continue
-        </button>
-
-    </section>
-
-
-    <!-- ================= SCREEN 5 ================= -->
-
-    <section id="screen5" class="hidden">
-
-        <div class="emoji">😂</div>
-
-        <h2>One more...</h2>
-
-        <div class="question">
-            Who was more annoying?
-        </div>
-
-        <div class="buttons">
-
-            <button class="option-btn" onclick="annoying(1)">
-                You
-            </button>
-
-            <button class="option-btn" onclick="annoying(2)">
-                Me
-            </button>
-
-            <button class="option-btn" onclick="annoying(3)">
-                Both of us 💀
-            </button>
-
-        </div>
-
-        <div id="response4" class="response"></div>
-
-        <button
-            id="continue4"
-            class="main-btn hidden"
-            onclick="showScreen(6)">
-            Continue
-        </button>
-
-    </section>
-
-
-    <!-- ================= SCREEN 6 ================= -->
-
-    <section id="screen6" class="hidden">
-
-        <div class="emoji">👁️</div>
-
-        <h2>Okay...</h2>
-
-        <div class="question">
-            Do you actually want my Instagram username?
-        </div>
-
-        <button class="main-btn" onclick="showScreen(7)">
-            YES 👀
-        </button>
-
-    </section>
-
-
-    <!-- ================= SCREEN 7 ================= -->
-
-    <section id="screen7" class="hidden">
-
-        <div class="emoji">🔐</div>
-
-        <h2>SECRET REVEAL</h2>
-
-        <p>
-            Okay, you made it this far.
-            <br><br>
-            Surely you didn't think
-            I'd make you work this hard
-            for nothing. 👀
-        </p>
-
-        <div class="reveal-box" id="revealBox">
-
-            <button id="revealBtn">
-                👁️ Reveal my Instagram username
-            </button>
+            just hugging and saying goodbye?
 
         </div>
 
@@ -489,37 +500,237 @@
 
             <button
                 class="option-btn"
-                onclick="giveUp()">
-                Give up 😭
+                onclick="nextScreen(4)">
+                Of course I remember ❤️
             </button>
 
             <button
-                class="money-btn"
-                onclick="payForIt()">
-                Pay for it 💰
+                class="option-btn"
+                onclick="nextScreen(4)">
+                Stop 😭
             </button>
 
         </div>
 
-        <div class="small">
-            Good luck. 😂
+    </div>
+
+
+
+    <!-- =====================================
+         SCREEN 4
+         ===================================== -->
+
+    <div class="screen hidden" id="screen4">
+
+        <div class="emoji">🌧️</div>
+
+        <h2>And then there was this...</h2>
+
+        <div class="memory-box">
+
+            <div class="memory-label">
+                Memory #2
+            </div>
+
+            That time it rained and we started
+            jumping in the puddles on the street
+            like we had absolutely nothing
+            to care about. 😂🌧️
+
         </div>
 
-    </section>
+        <div class="buttons">
+
+            <button
+                class="option-btn"
+                onclick="nextScreen(5)">
+                We were crazy 😂
+            </button>
+
+            <button
+                class="option-btn"
+                onclick="nextScreen(5)">
+                I remember 😭
+            </button>
+
+        </div>
+
+    </div>
 
 
-    <!-- ================= SCREEN 8 ================= -->
 
-    <section id="screen8" class="hidden">
+    <!-- =====================================
+         SCREEN 5
+         ===================================== -->
 
-        <div class="big">💳</div>
+    <div class="screen hidden" id="screen5">
 
-        <h2>PAYMENT REQUIRED</h2>
+        <div class="emoji">🤍</div>
+
+        <h2>And this one...</h2>
+
+        <div class="memory-box">
+
+            <div class="memory-label">
+                Memory #3
+            </div>
+
+            Just sitting there...
+
+            <br><br>
+
+            head to shoulder,
+            shoulder to head,
+
+            <br><br>
+
+            not really saying much.
+
+            <br>
+
+            Just being there.
+
+        </div>
+
+        <div class="buttons">
+
+            <button
+                class="option-btn"
+                onclick="nextScreen(6)">
+                I remember ❤️
+            </button>
+
+            <button
+                class="option-btn"
+                onclick="nextScreen(6)">
+                Why do you remember everything? 😭
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================
+         SCREEN 6
+         ===================================== -->
+
+    <div class="screen hidden" id="screen6">
+
+        <div class="emoji">😂</div>
+
+        <h2>Okay, enough nostalgia.</h2>
+
+        <div class="question">
+            One final question before
+            I reveal your reward...
+        </div>
+
+        <div class="buttons">
+
+            <button
+                class="option-btn"
+                onclick="nextScreen(7)">
+                I'm ready 👀
+            </button>
+
+            <button
+                class="option-btn"
+                onclick="nextScreen(7)">
+                This feels suspicious 😂
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================
+         SCREEN 7
+         ===================================== -->
+
+    <div class="screen hidden" id="screen7">
+
+        <div class="emoji">🔐</div>
+
+        <h2>SECRET REVEAL</h2>
+
+        <p>
+
+            Okay.
+
+            <br><br>
+
+            You made it this far.
+
+            <br><br>
+
+            Surely you didn't think
+            I'd make you work this hard
+            for nothing. 👀
+
+        </p>
+
+
+        <div class="reveal-area" id="revealArea">
+
+            <button
+                id="revealBtn"
+                aria-label="Reveal Instagram username">
+
+                👁️ Reveal IG username
+
+            </button>
+
+        </div>
+
+
+        <div class="buttons">
+
+            <button
+                class="option-btn"
+                onclick="giveUp()">
+
+                Give up 😭
+
+            </button>
+
+
+            <button
+                class="money-btn"
+                onclick="goToPayment()">
+
+                Pay for it 💰
+
+            </button>
+
+        </div>
+
+
+        <div class="small-note">
+            You may regret choosing this screen. 😂
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================
+         SCREEN 8
+         ===================================== -->
+
+    <div class="screen hidden" id="screen8">
+
+        <div class="big-emoji">💳</div>
+
+        <h2>Payment required</h2>
 
         <div class="message-box">
 
             <p>
-                Calculating price...
+                Calculating your price...
             </p>
 
             <br>
@@ -531,33 +742,43 @@
             <br>
 
             <p>
-                Seems reasonable.
+                Seems affordable.
             </p>
 
         </div>
 
-        <button
-            class="money-btn"
-            onclick="processPayment()">
-            Pay $0.00
-        </button>
 
-    </section>
+        <div class="buttons">
+
+            <button
+                class="money-btn"
+                onclick="paymentFailed()">
+
+                Pay $0.00
+
+            </button>
+
+        </div>
+
+    </div>
 
 
-    <!-- ================= SCREEN 9 ================= -->
 
-    <section id="screen9" class="hidden">
+    <!-- =====================================
+         SCREEN 9
+         ===================================== -->
 
-        <div class="big">💀</div>
+    <div class="screen hidden" id="screen9">
+
+        <div class="big-emoji">💀</div>
 
         <h2>PAYMENT FAILED</h2>
 
         <div class="message-box">
 
             <p>
-                We regret to inform you that
-                your payment could not be processed.
+                Unfortunately, your payment
+                could not be processed.
             </p>
 
             <br>
@@ -566,544 +787,512 @@
                 <strong>Reason:</strong>
             </p>
 
+            <br>
+
             <p>
                 You're broke. 😭
             </p>
 
         </div>
 
-        <button
-            class="main-btn"
-            onclick="showScreen(10)">
-            That's rude 😭
-        </button>
 
-    </section>
+        <div class="buttons">
+
+            <button
+                class="main-btn"
+                onclick="nextScreen(10)">
+
+                That's rude 😭
+
+            </button>
+
+        </div>
+
+    </div>
 
 
-    <!-- ================= SCREEN 10 ================= -->
 
-    <section id="screen10" class="hidden">
+    <!-- =====================================
+         SCREEN 10
+         ===================================== -->
 
-        <div class="big">😂</div>
+    <div class="screen hidden" id="screen10">
+
+        <div class="big-emoji">😂</div>
 
         <h2>Okay, okay.</h2>
 
         <p>
+
             You really thought I was going
-            to give it to you that easily?
-        </p>
+            to make it that easy?
 
-        <br>
+            <br><br>
 
-        <p>
             Anyway...
-            <br>
-            you already found your way back here.
+
+            <br><br>
+
+            You said you wanted to talk
+            to me about something.
+
         </p>
 
-        <br>
+
+        <div class="buttons">
+
+            <button
+                class="main-btn"
+                onclick="nextScreen(11)">
+
+                I'm listening 👀
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================
+         SCREEN 11
+         ===================================== -->
+
+    <div class="screen hidden" id="screen11">
+
+        <div class="big-emoji">👀</div>
+
+        <h2>Okay. Your turn.</h2>
 
         <p>
-            So forget the investigation.
+
+            No more questions.
+
+            <br>
+
+            No more investigation.
+
+            <br><br>
+
+            Just tell me...
+
+            <br><br>
+
+            <strong>
+                What did you want to talk about?
+            </strong>
+
         </p>
 
-        <button
-            class="main-btn"
-            onclick="showScreen(11)">
-            Continue
-        </button>
 
-    </section>
+        <div class="buttons">
+
+            <button
+                class="main-btn"
+                onclick="finish()">
+
+                Okay... 👀
+
+            </button>
+
+        </div>
+
+    </div>
 
 
-    <!-- ================= SCREEN 11 ================= -->
 
-    <section id="screen11" class="hidden">
+    <!-- =====================================
+         FINAL SCREEN
+         ===================================== -->
 
-        <div class="big">👀</div>
+    <div class="screen hidden" id="finalScreen">
+
+        <div class="big-emoji">❤️</div>
 
         <h2>I'm listening.</h2>
 
         <p>
-            You said you wanted to talk
-            to me about something.
+
+            Now you can finally
+            explain yourself. 😂
+
+            <br><br>
+
+            Take your time.
+
         </p>
 
-        <br>
-
-        <p>
-            No more questions.
-            <br>
-            No more investigation. 😂
-        </p>
-
-        <br>
-
-        <p>
-            <strong>
-                So... what did you want to talk about?
-            </strong>
-        </p>
-
-        <br>
-
-        <button
-            class="main-btn"
-            onclick="finish()">
-            Okay... I'll tell you 👀
-        </button>
-
-    </section>
-
-
-    <!-- ================= FINAL ================= -->
-
-    <section id="finalScreen" class="hidden">
-
-        <div class="big">❤️</div>
-
-        <h2>Good.</h2>
-
-        <p>
-            Now you can finally explain yourself. 😂
-        </p>
-
-        <br>
-
-        <p>
-            <strong>
-                I'm listening.
-            </strong>
-        </p>
-
-    </section>
+    </div>
 
 </div>
 
 
+
 <script>
 
-/* ==================================================
-   FLOATING HEARTS
-   ================================================== */
+    /* ==========================================
+       FLOATING HEARTS
+       ========================================== */
 
-const heartContainer =
-    document.getElementById("hearts");
+    const heartContainer =
+        document.getElementById("hearts");
 
-const heartSymbols = [
-    "❤️",
-    "💕",
-    "💗",
-    "💖"
-];
+    const heartSymbols = [
+        "❤️",
+        "💕",
+        "💗",
+        "💖"
+    ];
 
-for (let i = 0; i < 18; i++) {
+    for (let i = 0; i < 18; i++) {
 
-    const heart =
-        document.createElement("div");
+        const heart =
+            document.createElement("div");
 
-    heart.className = "heart";
+        heart.className = "heart";
 
-    heart.textContent =
-        heartSymbols[
-            Math.floor(
-                Math.random() * heartSymbols.length
-            )
-        ];
+        heart.textContent =
+            heartSymbols[
+                Math.floor(
+                    Math.random() *
+                    heartSymbols.length
+                )
+            ];
 
-    heart.style.left =
-        Math.random() * 100 + "vw";
+        heart.style.left =
+            Math.random() * 100 + "vw";
 
-    heart.style.fontSize =
-        (14 + Math.random() * 18) + "px";
+        heart.style.fontSize =
+            (14 + Math.random() * 18) + "px";
 
-    heart.style.animationDuration =
-        (6 + Math.random() * 7) + "s";
+        heart.style.animationDuration =
+            (6 + Math.random() * 7) + "s";
 
-    heart.style.animationDelay =
-        Math.random() * 8 + "s";
+        heart.style.animationDelay =
+            Math.random() * 8 + "s";
 
-    heartContainer.appendChild(heart);
-}
-
-
-/* ==================================================
-   SCREEN SWITCHING
-   ================================================== */
-
-function showScreen(number) {
-
-    document.querySelectorAll("section").forEach(section => {
-        section.classList.add("hidden");
-    });
-
-    document
-        .getElementById("screen" + number)
-        .classList.remove("hidden");
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-}
+        heartContainer.appendChild(heart);
+    }
 
 
-/* ==================================================
-   QUESTION 1
-   ================================================== */
+    /* ==========================================
+       SCREEN NAVIGATION
+       ========================================== */
 
-function answer1(choice) {
+    function nextScreen(number) {
 
-    const response =
-        document.getElementById("response1");
+        document
+            .querySelectorAll(".screen")
+            .forEach(screen => {
+                screen.classList.add("hidden");
+            });
 
-    if (choice === 1) {
+        const next =
+            document.getElementById(
+                "screen" + number
+            );
 
-        response.textContent =
-            "Hmm... interesting. 👀";
+        next.classList.remove("hidden");
+
+        next.style.animation = "none";
+
+        void next.offsetWidth;
+
+        next.style.animation =
+            "screenIn .38s ease";
+    }
+
+
+    /* ==========================================
+       ANSWER FEEDBACK
+       ========================================== */
+
+    function answerQuestion(next) {
+
+        /*
+        Give a tiny delay so the button
+        press feels responsive.
+        */
+
+        setTimeout(() => {
+            nextScreen(next);
+        }, 250);
+    }
+
+
+    /* ==========================================
+       GIVE UP
+       ========================================== */
+
+    function giveUp() {
+
+        const button =
+            document.querySelector(
+                '#screen7 .option-btn'
+            );
+
+        button.textContent =
+            "You gave up 😂";
+
+        setTimeout(() => {
+
+            button.textContent =
+                "Give up 😭";
+
+        }, 1400);
+    }
+
+
+    /* ==========================================
+       PAYMENT
+       ========================================== */
+
+    function goToPayment() {
+
+        nextScreen(8);
 
     }
 
-    if (choice === 2) {
 
-        response.textContent =
-            "Very convincing answer. 😂";
+    function paymentFailed() {
 
-    }
-
-    if (choice === 3) {
-
-        response.textContent =
-            "Okay. I'll pretend I believe you. 😭";
+        nextScreen(9);
 
     }
 
-    document
-        .getElementById("continue1")
-        .classList.remove("hidden");
-}
 
+    /* ==========================================
+       FINAL
+       ========================================== */
 
-/* ==================================================
-   QUESTION 2
-   ================================================== */
+    function finish() {
 
-function answer2(choice) {
+        document
+            .querySelectorAll(".screen")
+            .forEach(screen => {
+                screen.classList.add("hidden");
+            });
 
-    const response =
-        document.getElementById("response2");
+        const final =
+            document.getElementById(
+                "finalScreen"
+            );
 
-    if (choice === 1) {
+        final.classList.remove("hidden");
 
-        response.textContent =
-            "Fair enough. That's actually a good reason. 😂";
-
+        final.style.animation =
+            "screenIn .38s ease";
     }
 
-    if (choice === 2) {
 
-        response.textContent =
-            "Ah. So you were conducting research. 👀";
+    /* ==========================================
+       RUNAWAY REVEAL BUTTON
+       ========================================== */
 
-    }
-
-    if (choice === 3) {
-
-        response.textContent =
-            "CLASSIFIED? Okay, secret agent. 😭";
-
-    }
-
-    document
-        .getElementById("continue2")
-        .classList.remove("hidden");
-}
-
-
-/* ==================================================
-   MEMORY
-   ================================================== */
-
-function memoryAnswer(choice) {
-
-    const response =
-        document.getElementById("response3");
-
-    if (choice === 1) {
-
-        response.textContent =
-            "Good. You still remember. 😂❤️";
-
-    }
-
-    if (choice === 2) {
-
-        response.textContent =
-            "Some memories really should stay classified. 😂";
-
-    }
-
-    document
-        .getElementById("continue3")
-        .classList.remove("hidden");
-}
-
-
-/* ==================================================
-   ANNOYING QUESTION
-   ================================================== */
-
-function annoying(choice) {
-
-    const response =
-        document.getElementById("response4");
-
-    if (choice === 1) {
-
-        response.textContent =
-            "Correct answer. I knew you'd admit it. 😂";
-
-    }
-
-    if (choice === 2) {
-
-        response.textContent =
-            "Wrong. But I respect the confidence. 😭";
-
-    }
-
-    if (choice === 3) {
-
-        response.textContent =
-            "Finally. A scientifically correct answer. 💀";
-
-    }
-
-    document
-        .getElementById("continue4")
-        .classList.remove("hidden");
-}
-
-
-/* ==================================================
-   RUNAWAY REVEAL BUTTON
-   ================================================== */
-
-const revealBtn =
-    document.getElementById("revealBtn");
-
-const revealBox =
-    document.getElementById("revealBox");
-
-let escapeCount = 0;
-
-function moveRevealButton() {
-
-    const boxWidth =
-        revealBox.clientWidth;
-
-    const boxHeight =
-        revealBox.clientHeight;
-
-    const buttonWidth =
-        revealBtn.offsetWidth;
-
-    const buttonHeight =
-        revealBtn.offsetHeight;
-
-    const maxX =
-        Math.max(
-            0,
-            boxWidth - buttonWidth
+    const revealButton =
+        document.getElementById(
+            "revealBtn"
         );
 
-    const maxY =
-        Math.max(
-            0,
-            boxHeight - buttonHeight
+    const revealArea =
+        document.getElementById(
+            "revealArea"
         );
 
-    const x =
-        Math.random() * maxX;
 
-    const y =
-        Math.random() * maxY;
-
-    revealBtn.style.left =
-        x + "px";
-
-    revealBtn.style.top =
-        y + "px";
-
-    revealBtn.style.transform =
-        "none";
-
-    revealBtn.classList.remove("shake");
-
-    void revealBtn.offsetWidth;
-
-    revealBtn.classList.add("shake");
-
-    escapeCount++;
-
-    if (escapeCount === 1) {
-
-        revealBtn.textContent =
-            "Too fast 😂";
-
-    }
-
-    else if (escapeCount === 2) {
-
-        revealBtn.textContent =
-            "Nice try 👀";
-
-    }
-
-    else if (escapeCount === 3) {
-
-        revealBtn.textContent =
-            "Almost 😭";
-
-    }
-
-    else {
-
-        revealBtn.textContent =
-            "Nope 😂";
-
-    }
-}
+    let lastEscape = 0;
 
 
-/* Cursor gets close */
+    function revealButtonRunAway() {
 
-document.addEventListener(
-    "mousemove",
-    function(event) {
+        /*
+        Prevent the button from moving
+        repeatedly in the same instant.
+        */
 
-        if (
-            document
-                .getElementById("screen7")
-                .classList.contains("hidden")
-        ) {
+        const now =
+            Date.now();
+
+        if (now - lastEscape < 400) {
             return;
         }
 
-        const rect =
-            revealBtn.getBoundingClientRect();
+        lastEscape = now;
 
-        const centerX =
-            rect.left + rect.width / 2;
 
-        const centerY =
-            rect.top + rect.height / 2;
+        const areaWidth =
+            revealArea.clientWidth;
 
-        const distance =
-            Math.sqrt(
-                Math.pow(
-                    event.clientX - centerX,
-                    2
-                ) +
-                Math.pow(
-                    event.clientY - centerY,
-                    2
-                )
+        const areaHeight =
+            revealArea.clientHeight;
+
+        const buttonWidth =
+            revealButton.offsetWidth;
+
+        const buttonHeight =
+            revealButton.offsetHeight;
+
+
+        const padding = 8;
+
+
+        const maxX =
+            Math.max(
+                padding,
+                areaWidth -
+                buttonWidth -
+                padding
             );
 
-        if (distance < 115) {
 
-            moveRevealButton();
+        const maxY =
+            Math.max(
+                padding,
+                areaHeight -
+                buttonHeight -
+                padding
+            );
+
+
+        const newX =
+            padding +
+            Math.random() *
+            (maxX - padding);
+
+
+        const newY =
+            padding +
+            Math.random() *
+            (maxY - padding);
+
+
+        revealButton.style.left =
+            newX + "px";
+
+        revealButton.style.top =
+            newY + "px";
+
+        revealButton.style.transform =
+            "none";
+    }
+
+
+    /*
+    IMPORTANT:
+
+    The button does NOT run when the mouse
+    is simply moving.
+
+    It only runs when the cursor is
+    genuinely CLOSE to it.
+    */
+
+    document.addEventListener(
+        "mousemove",
+        function(event) {
+
+            if (
+                document
+                    .getElementById("screen7")
+                    .classList
+                    .contains("hidden")
+            ) {
+                return;
+            }
+
+
+            const rect =
+                revealButton.getBoundingClientRect();
+
+
+            const closestX =
+                Math.max(
+                    rect.left,
+                    Math.min(
+                        event.clientX,
+                        rect.right
+                    )
+                );
+
+
+            const closestY =
+                Math.max(
+                    rect.top,
+                    Math.min(
+                        event.clientY,
+                        rect.bottom
+                    )
+                );
+
+
+            const distance =
+                Math.sqrt(
+                    Math.pow(
+                        event.clientX -
+                        closestX,
+                        2
+                    ) +
+                    Math.pow(
+                        event.clientY -
+                        closestY,
+                        2
+                    )
+                );
+
+
+            /*
+            Only escape when the cursor
+            is actually close.
+            */
+
+            if (distance < 65) {
+
+                revealButtonRunAway();
+
+            }
 
         }
-    }
-);
+    );
 
 
-/* Touchscreen */
+    /*
+    Mobile / touchscreen:
 
-revealBtn.addEventListener(
-    "touchstart",
-    function(event) {
+    The moment she actually tries
+    to touch the button, it runs.
+    */
 
-        event.preventDefault();
+    revealButton.addEventListener(
+        "touchstart",
+        function(event) {
 
-        moveRevealButton();
+            event.preventDefault();
 
-    }
-);
+            revealButtonRunAway();
 
-
-/* Mouse click */
-
-revealBtn.addEventListener(
-    "click",
-    function(event) {
-
-        event.preventDefault();
-
-        moveRevealButton();
-
-    }
-);
+        },
+        {
+            passive: false
+        }
+    );
 
 
-/* ==================================================
-   GIVE UP
-   ================================================== */
+    /*
+    If somehow she clicks it,
+    still don't reveal anything.
+    */
 
-function giveUp() {
+    revealButton.addEventListener(
+        "click",
+        function(event) {
 
-    revealBtn.textContent =
-        "You gave up 😂";
+            event.preventDefault();
 
-    setTimeout(function() {
+            revealButtonRunAway();
 
-        revealBtn.textContent =
-            "👁️ Reveal my Instagram username";
-
-    }, 1600);
-}
-
-
-/* ==================================================
-   PAY FOR IT
-   ================================================== */
-
-function payForIt() {
-
-    showScreen(8);
-
-}
-
-
-/* ==================================================
-   PAYMENT
-   ================================================== */
-
-function processPayment() {
-
-    showScreen(9);
-
-}
-
-
-/* ==================================================
-   END
-   ================================================== */
-
-function finish() {
-
-    document.querySelectorAll("section").forEach(section => {
-        section.classList.add("hidden");
-    });
-
-    document
-        .getElementById("finalScreen")
-        .classList.remove("hidden");
-
-}
+        }
+    );
 
 </script>
 
